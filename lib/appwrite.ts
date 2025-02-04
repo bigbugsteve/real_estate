@@ -4,7 +4,7 @@ import { openAuthSessionAsync } from 'expo-web-browser'
 
 export const config = {
   platform: 'com.jsm.restate',
-  endpoint: process.env.EXPO_PUBLICK_APPWRITE_ENDPOINT,
+  endpoint: process.env.EXPO_PUBLIC_APPWRITE_ENDPOINT,
   projectId: process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID
 }
 
@@ -21,7 +21,6 @@ export const account = new Account(client)
 export async function login() {
   try {
     const redirectUri = Linking.createURL('/');
-
     
     const response = await account.createOAuth2Token(
       OAuthProvider.Google,
@@ -68,7 +67,7 @@ export async function logout() {
   }
 }
 
-export async function getUser() {
+export async function getCurrentUser() {
   try {
     const response = await account.get()
 
